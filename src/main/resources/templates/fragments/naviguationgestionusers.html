@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<title>Header</title>
+</head>
+
+<body>
+
+ <header id="header" th:fragment="navigationUsers">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
+        <!-- Uncomment below if you prefer to use a text image -->
+        <!--<h1><a href="#hero">Header 1</a></h1>-->
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="">Home</a></li>
+          <li><a href="/users/listeusers">Utilisateurs</a></li>
+          <li><a href="/users/listeroles">Roles</a></li>
+          <li><a href="/users/listeprivileges">Privileges</a></li>
+          <li><a href="/users/listemodules">Modules</a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header>
+ </body>
+ </html>

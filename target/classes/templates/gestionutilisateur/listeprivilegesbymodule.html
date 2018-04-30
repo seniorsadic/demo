@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutUsers">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content"> 
+	
+		<div class="row">
+		        <div class="col-md-12">
+		          <h3 class="section-title">Liste des privileges.</h3>
+		          <div class="section-title-divider"></div>
+		            <dl class="dl-horizontal" style="font-size: 25px; ">
+					  <dt th:text="${module.name}"></dt>
+		  			  <dd th:text="${module.description}"></dd>
+					</dl>
+		        </div>
+		</div>
+      
+       <br/><br/>    
+	<table  class="table table-hover table-bordered">
+		<thead>
+		  <tr class="info">
+				  <td>Id</td>
+				  <td>Nom</td>
+				  <td></td>
+		  </tr>
+		</thead>
+		<tbody>
+			<tr th:each="l:${listes}">
+					  <td th:text="${l.id}"></td>
+					  <td th:text="${l.name}"></td>
+					    <td> <a  href="#"><i class="fa fa-pencil-square"> Modifier </i></a> |
+					       <a  href="" data-toggle="modal" data-target="#myModal" > <i class="fa fa-trash"> Supprimer </i></a>
+					    </td>
+			  </tr>
+		</tbody>
+		</table>
+   </div>
+  
+</body>
+</html>

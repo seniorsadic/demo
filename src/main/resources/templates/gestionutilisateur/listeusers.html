@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutUsers">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+	
+	
+	<a class="btn btn-primary btn-xs dropdown-toggle" href="ajouterusers">Ajouter</a> <br/><br/>
+	  
+    <form class="form-inline" th:action="@{listeusers}" method="get">
+			<div class="form-group">
+				<label >Mot Cle:</label>
+				<input class="form-control" name="motCle" type="text" th:value="${motCle}"/>									
+			</div>
+	</form>
+	<br/><br/>
+	  <!-- Table -->
+	  <table class="table table-striped">
+		  <tr class="info">
+				  <td>Username</td>
+				  <td>Nom</td>
+				  <td>Email</td>
+				  <td>Statut</td>
+		  </tr>
+			<tbody>
+				<tr th:each="u:${users.content}">
+						  <td th:text="${u.username}"></td>
+						  <td th:text="${u.nom}"></td>
+						  <td th:text="${u.email}"></td>
+						  <td th:switch="${u.actived}">
+								      <span th:case="true" class="label label label-success">
+								       		<a th:href="@{activer(id=${u.username})}">Activer</a>
+								       </span>
+									  <span th:case="false" class="label label-danger">
+									  		<a th:href="@{activer(id=${u.username})}">Bloquer</a>
+									  </span>
+						  </td>
+						  
+				  </tr>
+			</tbody>
+	  </table>
+	  <nav aria-label="...">
+									  <ul class="pagination">
+									    <li class="active" th:each="p:${pages}">
+									    		<a href="#" aria-label="Previous" th:text="${p}" th:href="@{listeusers(page=${p})}"><span aria-hidden="true">&laquo;</span></a>
+									    </li>
+									  </ul>
+								</nav>
+
+
+     
+
+    	</div>
+
+</body>
+</html>

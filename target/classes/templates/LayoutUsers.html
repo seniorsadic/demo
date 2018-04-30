@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: header">
+<meta charset="utf-8">
+<title>Header</title>
+</head>
+
+<body>
+
+ <div id="preloader"></div>
+
+<div th:replace="fragments/naviguationgestionusers :: navigationUsers"></div>
+
+ <section id="about" style="min-height: 600px;">
+    <div class="container wow fadeInUp">
+    </div>
+      <div class="row">
+         <div class="col-md-10 col-md-offset-1" layout:fragment="content">
+	  
+	  	</div>
+      </div>
+  </section>
+	
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+</html>

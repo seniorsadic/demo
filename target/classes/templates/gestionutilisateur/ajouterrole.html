@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutUsers">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="row">
+	        <div class="col-md-12">
+	          <h3 class="section-title">Ajouter Role</h3>
+	          <div class="section-title-divider"></div>
+	        </div>
+	      </div>
+
+
+		 <form th:action="@{saverole}" method="post" th:object="${role}" >
+				  			  
+				  <div class="row">
+				  		  <div class="col-md-6">
+				  		  		<div class="form-group">
+								    <label for="exampleInputEmail1">Role</label>
+								    <input th:field="*{role}"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Saisir nom">
+								    <span th:errors="*{role}" ></span>
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Description</label>
+								    <input th:field="*{description}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+								    <span th:errors="*{description}" ></span>
+								 </div>
+				  		  </div>
+				  		  <div class="col-md-5">
+				  		  		<div class="panel panel-primary">
+								  <div class="panel-heading">Les privileges</div>
+								  <div class="panel-body">
+								      <div class="checkbox" th:each="p:${listeprivileges}">
+										  <label >
+										     <input type="checkbox" name="valeur" th:value="${p.id}" th:text="${p.name + ' (' +p.module.name+')'}" >		  
+										  </label>
+									  </div>
+								  </div>
+								</div> 
+				  		  </div>
+				  </div>
+				  
+				  
+				  <button type="submit" class="btn btn-primary">Ajouter</button>
+			</form>
+
+	</div>
+
+</body>
+</html>

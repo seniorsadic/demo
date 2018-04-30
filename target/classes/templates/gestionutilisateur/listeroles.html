@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutUsers">
+
+<head>
+<title>Layout</title>
+<script src="../static/js/sweetalert.min.js" th:src="@{/js/sweetalert.min}"></script>
+
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+	
+			<div class="row">
+		        <div class="col-md-12">
+		          <h3 class="section-title">Liste des roles</h3>
+		          <div class="section-title-divider"></div>
+		        </div>
+		      </div>
+
+        <a class="btn btn-primary" href="ajouterrole">
+       			<i class="fa fa-arrows fa-lg"></i> Ajouter
+        </a><br/><br/>				
+		<table class="table table-hover">
+		  <tr class="info">
+				  <td>Role</td>
+				  <td>Designation</td>
+				  <td> </td>
+		  </tr>
+		<tbody>
+			<tr th:each="u:${roles.content}">
+					  <td th:text="${u.role}"></td>
+					  <td th:text="${u.description}"></td>
+					  <td> 
+					       <a th:href="@{listeprivilegebyrole(role=${u.role})}"> <i class="fa fa-list" aria-hidden="true"> Liste </i></a> |
+					  		<a href="#"><i class="fa fa-pencil-square"> Modifier </i></a> |
+					        <a onclick="mensaje2()" th:href="@{supprimerrole(role=${u.role})}"  ><i class="fa fa-trash"> Supprimer</i></a>
+					 </td>
+			  </tr>
+		</tbody>
+		</table>
+		<nav aria-label="...">
+			  <ul class="pagination">
+			    <li class="active" th:each="p:${pages}">
+			    		<a href="#" aria-label="Previous" th:text="${p}" th:href="@{listeroles(page=${p})}"><span aria-hidden="true">&laquo;</span></a>
+			    </li>
+			  </ul>
+		</nav>
+	 </div>
+
+</body>
+</html>

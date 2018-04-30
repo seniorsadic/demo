@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+
+		 <form th:action="@{save}" method="post" th:object="${operation}" >
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Libelle</label>
+				    <input th:field="*{libelle}"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Saisir nom">
+				    <span th:errors="*{libelle}" ></span>
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Code instruction</label>
+				    <input th:field="*{codeints}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+				    <span th:errors="*{codeints}" ></span>
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Code Banque</label>
+				    <input th:field="*{codeBanque}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+				    <span th:errors="*{codeBanque}" ></span>
+				  </div>
+				  
+				  
+				  <button type="submit" class="btn btn-primary">Ajouter</button>
+			</form>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutUsers">
+
+<head>
+<title>Layout</title>
+
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+	
+	<form  class="form-inline" th:action="@{savemodule}" method="post" th:object="${module}">
+		  <div class="form-group">
+		    <label for="exampleInputName2">Name</label>
+		    <input th:field="*{name}"  type="text" class="form-control" id="exampleInputName2" placeholder="Gestion PCB">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputEmail2">Description</label>
+		    <input th:field="*{description}"  type="text" class="form-control" id="exampleInputEmail2" placeholder="description" >
+		  </div>
+		  
+		  <div class="row">
+		    <br/><br/>
+		    
+			  	<table  class="table" id="t">
+				  	<tbody>
+		                <tr class="info">
+				                <td>Privileges</td>
+				                <td>     </td>
+				                <td>     </td>
+		                </tr>
+			            <tr>
+			                <td>
+			                    <input  class="form-control" id="d" type="text" /></td>
+			                <td>     </td>
+			                <td>
+			                    <a id="add" class="btn btn-info">Ajouter</a></td>
+			            </tr>
+		      	    </tbody>
+			  	</table>
+		  	
+		  </div>
+		 
+		  <div class="row">
+		  		<div class="col-md-1 col-md-offset-11">
+		  				<button id="envoyer"  class="btn btn-primary" onclick="ajouter(1)">Creer</button>
+		  		</div>
+		  </div>
+		  
+		</form>
+		  
+
+
+		 <!-- <form th:action="@{saverole}" method="post" th:object="${role}" >
+				  			  
+				  <div class="row">
+				  		  <div class="col-md-6">
+				  		  		<div class="form-group">
+								    <label for="exampleInputEmail1">Role</label>
+								    <input th:field="*{role}"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Saisir nom">
+								    <span th:errors="*{role}" ></span>
+								  </div>
+								  <div class="form-group">
+								    <label for="exampleInputEmail1">Description</label>
+								    <input th:field="*{description}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+								    <span th:errors="*{description}" ></span>
+								 </div>
+				  		  </div>
+				  		  <div class="col-md-4">
+				  		  		<div class="panel panel-primary">
+								  <div class="panel-heading">Les privileges</div>
+								  <div class="panel-body">
+								      <div class="checkbox" th:each="p:${listeprivileges}">
+										  <label >
+										     <input type="checkbox" name="valeur" th:value="${p.id}" th:text="${p.name}">		  
+										  </label>
+									  </div>
+								  </div>
+								</div> 
+				  		  </div>
+				  </div>
+				  
+				  
+				  <button type="submit" class="btn btn-primary">Ajouter</button>
+			</form> -->
+
+	</div>
+
+</body>
+</html>

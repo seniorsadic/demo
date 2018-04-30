@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutUsers">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content"> 
+      <a class="btn btn-primary btn-xs dropdown-toggle" href="ajouter">
+     			 Ajouter
+      </a>  <br/><br/>    
+	<table id="example" class="table table-hover table-bordered">
+		<thead>
+		  <tr class="info">
+				  <td>Id</td>
+				  <td>Nom</td>
+				  <td></td>
+		  </tr>
+		</thead>
+		<tbody>
+			<tr th:each="l:${listes}">
+					  <td th:text="${l.id}"></td>
+					  <td th:text="${l.name}"></td>
+					    <td> <a  href="#"><i class="fa fa-pencil-square"></i></a> |
+					       <a  href="" data-toggle="modal" data-target="#myModal" ><i class="fa fa-trash"></i></a>
+					    </td>
+			  </tr>
+		</tbody>
+		</table>
+		
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  Ajouter
+		</button>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Ajouter privilege</h4>
+		      </div>
+		      <div class="modal-body">
+		         <form th:action="@{saveprivilege}" method="post" th:object="${privilege}" >
+					  
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Privilege</label>
+					    <input th:field="*{name}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+					    <span th:errors="*{name}" ></span>
+					  </div>
+					  <button type="submit" class="btn btn-primary">Ajouter</button>
+				</form>
+		      </div>
+		      <!-- <div class="modal-footer">
+		        <button type="button" class="btn btn-primary">Create</button>
+		      </div> -->
+		    </div>
+		  </div>
+		</div>
+   </div>
+  
+</body>
+</html>
