@@ -36,8 +36,6 @@ public class AncienPCB {
 		this.splite = splite;
 	}
 
-
-
 	public String getCompte_ancien() {
 		return compte_ancien;
 	}
@@ -69,9 +67,5 @@ public class AncienPCB {
 	public void setSplite(Boolean splite) {
 		this.splite = splite;
 	}
-
-	
-
-	
 	
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutCompte">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content"> 
+	     <div class="row">
+	        <div class="col-md-12">
+	          <h3 class="section-title">Les classes</h3>
+	          <div class="section-title-divider"></div>
+	        </div>
+	      </div>
+		<section id="services">
+			 <div class="container wow fadeInUp">
+				      
+						<div class="row">
+					        <div th:each="l:${listes}" class="col-md-4 service-item">
+					          <div class="service-icon"><i class="fa fa-paper-plane"><a th:href="@{ajoutancienpcb(compte_ancien=${l.compte_ancien})}"></a></i></div>
+					          <h4  class="service-title"><a th:text="${l.intitule}" th:href="@{ajoutancienpcb(compte_ancien=${l.compte_ancien})}"></a></h4>
+					          <p th:text="${l.intitule}" class="service-description"></p>
+					        </div>
+					    </div>
+				</div>
+		 </section>
+    
+     <!--  <a class="btn btn-primary" href="ajoutancienpcb1">
+     			 Ajouter
+      </a>  <br/><br/>    
+	<table id="example" class="table table-hover table-bordered">
+		<thead>
+		  <tr class="info">
+				  <td>Compte</td>
+				  <td>Intitule</td>
+				  <td>Compte parent</td>
+				  <td>Splite</td>
+				  <td></td>
+		  </tr>
+		</thead>
+		<tbody>
+			<tr th:each="l:${listes}">
+					  <td th:text="${l.compte_ancien}"></td>
+					  <td th:text="${l.intitule}"></td>
+					  <td th:if="${l.parent != null}" th:text="${l.parent.compte_ancien}"></td>
+					  <td th:if="${l.parent == null}" ></td>
+					  <td th:text="${l.splite}"></td>
+					  <td>
+					  	 <a  th:href="@{ajoutancienpcb(compte_ancien=${l.compte_ancien})}"><i class="fa fa-list-alt"> Sous compte</i></a> 
+					  </td>
+			  </tr>
+		</tbody>
+		</table> -->
+   </div>
+  
+</body>
+</html>

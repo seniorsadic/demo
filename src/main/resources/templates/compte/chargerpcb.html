@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutCompte">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content"> 
+	
+		<div class="row">
+		        <div class="col-md-12">
+		          <h3 class="section-title">Uploader journal des transactions.</h3>
+		          <div class="section-title-divider"></div>
+		        </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-4">
+		  	<form method="POST" th:action="@{enregistrerfichier}" enctype="multipart/form-data">
+			    <input type="file" name="file" id="exampleInputFile" /><br/><br/>
+			    <input class="btn btn-primary" type="submit" value="Submit" />
+			</form>
+		  </div>
+		  <div class="col-md-8">
+		  		<div class="file-loading">
+    <input id="file-4" name="file-4[]" type="file" multiple>
+</div>
+<hr>
+<button class="btn btn-secondary btn-disable" type="button">Disable</button>
+<button class="btn btn-danger btn-destroy" type="button">Destroy</button>
+<button class="btn btn-success btn-recreate" type="button">Recreate</button>
+<button class="btn btn-info btn-refresh" type="button">Refresh</button>
+<button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+<script>
+$(document).on('ready', function() {
+    // the file input
+    var $el4 = $('#file-4'), initPlugin = function() {
+        $el4.fileinput({previewClass:''});
+    };
+ 
+    // initialize plugin
+    initPlugin();
+   
+    // `disable` and `enable` methods
+    $(".btn-disable").on('click', function() {
+        var $btn = $(this);
+        if (!$el4.data('fileinput')) {
+           initPlugin();
+        }
+        if ($el4.attr('disabled')) {
+            $el4.fileinput('enable');
+            $btn.html('Disable').removeClass('btn-primary').addClass('btn-secondary');
+        } else {
+            $el4.fileinput('disable');
+            $btn.html('Enable').removeClass('btn-secondary').addClass('btn-primary');
+        }
+    });
+ 
+    // `destroy` method
+    $(".btn-destroy").on('click', function() {
+        if ($el4.data('fileinput')) {
+            $el4.fileinput('destroy');
+        }
+    });
+ 
+    // recreate plugin after destroy
+    $(".btn-recreate").on('click', function() {
+        if ($el4.data('fileinput')) {
+            return;
+        }
+        initPlugin();
+    });
+ 
+    // refresh plugin with new options 
+    $(".btn-refresh").on('click', function() {
+        if (!$el4.data('fileinput')) {
+            // just normal init when plugin is not initialized
+            $el4.fileinput({previewClass:'bg-info'}); 
+        } else {
+            // refresh already initialized plugin with new options
+            $el4.fileinput('refresh', {previewClass:'bg-info'});
+        }
+    });
+    
+    // clear/reset the file input
+    $(".btn-clear").on('click', function() {
+        $el4.fileinput('clear');
+    });
+});
+</script>
+		  </div>
+		</div>
+	   <!--  <form method="POST" th:action="@{enregistrerfichier}" enctype="multipart/form-data">
+		    <input type="file" name="file" /><br/><br/>
+		    <input type="submit" value="Submit" />
+		</form> -->
+   </div>
+  
+</body>
+</html>

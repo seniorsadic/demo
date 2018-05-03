@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutCompte">
+
+<head>
+<title>Layout</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+	
+		<div class="row">
+		        <div class="col-md-12">
+		          <h3 class="section-title">Ajouter sous comptes</h3>
+		          <div class="section-title-divider"></div>
+		          
+		        </div>
+		</div>
+		
+		 <form th:action="@{enregistrerancien}" method="post" th:object="${ancien}" >
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Parent</label>
+				    <select name="parent" class="form-control">
+					  <option id="choix" th:each="l:${liste}" th:text="${l.compte_ancien}" ></option>
+					</select>
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Sous compte</label>
+				    <input th:field="*{compte_ancien}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+				    <span th:errors="*{compte_ancien}" ></span>
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Intitule</label>
+				    <input th:field="*{intitule}"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Saisir nom">
+				    <span th:errors="*{intitule}" ></span>
+				  </div>
+				 
+				  <button type="submit" class="btn btn-primary">Ajouter</button>
+			</form>
+
+	</div>
+
+</body>
+</html>

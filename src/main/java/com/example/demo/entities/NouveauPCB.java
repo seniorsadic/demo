@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="nouveau_pcb", schema = "bale")
 public class NouveauPCB {
 	@Id
-	private String compte_ancien;
+	private String compte_nouveau;
 	private String intitule;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -24,17 +24,17 @@ public class NouveauPCB {
 
 	public NouveauPCB(String compte_ancien, String intitule, NouveauPCB parent) {
 		super();
-		this.compte_ancien = compte_ancien;
+		this.compte_nouveau = compte_ancien;
 		this.intitule = intitule;
 		this.parent = parent;
 	}
 
-	public String getCompte_ancien() {
-		return compte_ancien;
+	public String getCompte_nouveau() {
+		return compte_nouveau;
 	}
 
-	public void setCompte_ancien(String compte_ancien) {
-		this.compte_ancien = compte_ancien;
+	public void setCompte_nouveau(String compte_nouveau) {
+		this.compte_nouveau = compte_nouveau;
 	}
 
 	public String getIntitule() {
